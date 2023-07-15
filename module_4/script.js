@@ -36,6 +36,7 @@ for ( var position in names) {
   var firstletter = (name.charAt(0)).toLowerCase();
   if (firstletter === "j") 
   {
+    byeSpeaker.name=name;
     byeSpeaker.speak();
   } 
   else 
