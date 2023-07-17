@@ -92,15 +92,14 @@ $ajaxUtils.sendGetRequest(
 // Builds HTML for the home page based on categories array
 // returned from the server.
 function buildAndShowHomeHTML (categories) {
-
-  // Load home snippet page
   $ajaxUtils.sendGetRequest(
     homeHtmlUrl,
-    function (homeHtmlUrl) {
+    function (homeHtml) {
       var chosenCategoryShortName = chooseRandomCategory(categories);
-      homeHtmlUrl = insertProperty(homeHtml, "randomCategoryShortName",'chosenCategoryShortName');
-      var homeHtmlToInsertIntoMainPage=homeHtmlUrl;
-      insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
+      shortname=chosenCategoryShortName.short_name;
+      var html=homeHtml;
+      html=insertProperty(html, "randomCategoryShortName",'shortname');
+      insertHtml("#main-content",html);
     },
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
 }
